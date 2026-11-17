@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone - Apple</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            bg: '#fbfbfd',
+                            gray: '#f5f5f7',
+                            dark: '#1d1d1f',
+                            subtext: '#6e6e73',
+                            blue: '#0071e3',
+                            blueHover: '#0077ed',
+                            orange: '#bf4800',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Apple-like scrollbar hiding & smooth utilities */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Realistic Titanium Frame & Glass Hardware Styling */
+        .iphone-chassis {
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 
+                0 30px 70px -15px rgba(0, 0, 0, 0.55),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.25),
+                inset 0 0 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .camera-lens {
+            background: radial-gradient(circle at 35% 35%, #2a3b4c 0%, #0d1117 45%, #000000 70%, #1c2530 100%);
+            box-shadow: 
+                inset 0 2px 4px rgba(255, 255, 255, 0.3),
+                0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .camera-lens::after {
+            content: '';
+            position: absolute;
+            top: 22%;
+            left: 24%;
+            width: 24%;
+            height: 24%;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(130, 190, 255, 0.7) 0%, rgba(45, 95, 180, 0.2) 70%, transparent 100%);
+        }
+
+        /* Subtle Apple Intelligence Glow */
+        .ai-glow {
+            background: linear-gradient(90deg, #007aff, #af52de, #ff2d55, #ff9500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .ai-border-glow {
+            position: relative;
+        }
+        .ai-border-glow::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(135deg, #38bdf8, #c084fc, #f472b6, #fb923c);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Modal Transitions */
+        .modal-backdrop {
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+    </style>
+</head>
+<body class="bg-apple-bg text-apple-dark font-sans antialiased selection:bg-apple-blue selection:text-white">
+
+    <!-- 1. TOP FROSTED-GLASS STICKY NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 w-full bg-[#fbfbfd]/80 backdrop-blur-xl border-b border-black/[0.06] transition-colors duration-300">
+        <nav class="max-w-[1024px] mx-auto px-4 sm:px-6 h-11 flex items-center justify-between text-[12px] font-normal tracking-tight text-apple-dark/85">
+            <!-- Apple Logo -->
+            <a href="#" aria-label="Apple" class="hover:text-black transition-colors py-2">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 17 48">
+                    <path d="m15.5752 19.0792a4.2055 4.2055 0 0 0 -2.01 3.5376 4.0931 4.0931 0 0 0 2.4908 3.7542 9.7779 9.7779 0 0 1 -1.2755 2.6351c-.7941 1.1431-1.6244 2.2862-2.8878 2.2862s-1.5883-.734-3.0443-.734c-1.42 0-1.9252.7581-3.08.7581s-1.9611-1.0589-2.8876-2.3584a11.3987 11.3987 0 0 1 -1.9373-6.1487c0-3.61 2.3464-5.523 4.6566-5.523 1.2274 0 2.25.8062 3.02.8062.734 0 1.8771-.8543 3.2729-.8543a4.3778 4.3778 0 0 1 3.6822 1.841zm-6.8586-2.0456a1.3865 1.3865 0 0 1 -.2527-.024 1.6557 1.6557 0 0 1 -.0361-.337 4.0341 4.0341 0 0 1 1.0228-2.5148 4.1571 4.1571 0 0 1 2.7314-1.4078 1.7815 1.7815 0 0 1 .0361.373 4.1487 4.1487 0 0 1 -.9867 2.587 3.6039 3.6039 0 0 1 -2.5148 1.3236z"></path>
+                </svg>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center space-x-7">
+                <a href="#lineup" class="hover:text-black transition-colors">Store</a>
+                <a href="#bento" class="hover:text-black transition-colors">Mac</a>
+                <a href="#bento" class="hover:text-black transition-colors">iPad</a>
+                <a href="#" class="text-black font-medium">iPhone</a>
+                <a href="#bento" class="hover:text-black transition-colors">Watch</a>
+                <a href="#bento" class="hover:text-black transition-colors">Vision</a>
+                <a href="#bento" class="hover:text-black transition-colors">AirPods</a>
+                <a href="#why-apple" class="hover:text-black transition-colors">TV &amp; Home</a>
+                <a href="#why-apple" class="hover:text-black transition-colors">Entertainment</a>
+                <a href="#lineup" class="hover:text-black transition-colors">Accessories</a>
+                <a href="#footer" class="hover:text-black transition-colors">Support</a>
+            </div>
+
+            <!-- Action Icons: Search, Bag, Mobile Menu -->
+            <div class="flex items-center space-x-5">
+                <button onclick="toggleSearchModal()" aria-label="Search apple.com" class="hover:text-black transition-colors p-1">
+                    <svg class="w-4 h-4 stroke-current" fill="none" stroke-width="1.6" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <path stroke-linecap="round" d="M20 20l-3.5-3.5"></path>
+                    </svg>
+                </button>
+
+                <button onclick="toggleBagDrawer()" aria-label="Shopping Bag" class="relative hover:text-black transition-colors p-1">
+                    <svg class="w-4 h-4 stroke-current" fill="none" stroke-width="1.6" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 7h12l1 12H5L6 7z"></path>
+                        <path stroke-linecap="round" d="M9 7V6a3 3 0 016 0v1"></path>
+                    </svg>
+                    <span id="bag-badge" class="hidden absolute -top-0.5 -right-1.5 bg-apple-blue text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center">0</span>
+                </button>
+
+                <button onclick="toggleMobileMenu()" aria-label="Menu" class="md:hidden hover:text-black transition-colors p-1">
+                    <svg class="w-4 h-4 stroke-current" fill="none" stroke-width="1.7" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" d="M4 8h16M4 16h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Mobile Dropdown Nav -->
+        <div id="mobile-menu" class="hidden md:hidden bg-[#fbfbfd] border-b border-black/10 px-8 py-6 space-y-3 text-xl font-semibold text-apple-dark">
+            <a href="#lineup" onclick="toggleMobileMenu()" class="block hover:text-apple-blue">Store</a>
+            <a href="#bento" onclick="toggleMobileMenu()" class="block hover:text-apple-blue">Mac</a>
+            <a href="#bento" onclick="toggleMobileMenu()" class="block hover:text-apple-blue">iPad</a>
+            <a href="#" onclick="toggleMobileMenu()" class="block text-apple-blue">iPhone</a>
+            <a href="#bento" onclick="toggleMobileMenu()" class="block hover:text-apple-blue">Watch</a>
+            <a href="#bento" onclick="toggleMobileMenu()" class="block hover:text-apple-blue">AirPods</a>
+            <a href="#why-apple" onclick="toggleMobileMenu()" class="block hover:text-apple-blue">Support</a>
+        </div>
+    </header>
+
+    <!-- 2. SUB-NAVIGATION PRODUCT RIBBON -->
+    <section class="bg-[#fbfbfd] border-b border-black/[0.05] overflow-x-auto no-scrollbar">
+        <div class="max-w-[1024px] mx-auto px-4 py-3.5 flex items-start justify-start md:justify-center space-x-6 sm:space-x-8 min-w-max">
+            <!-- iPhone 17 Pro -->
+            <a href="#hero" class="group flex flex-col items-center text-center w-16">
+                <div class="h-12 flex items-end justify-center mb-1.5">
+                    <svg class="w-8 h-11 text-apple-dark group-hover:scale-105 transition-transform" viewBox="0 0 36 52" fill="none">
+                        <rect x="2" y="2" width="15" height="48" rx="3.5" stroke="currentColor" stroke-width="1.6"/>
+                        <rect x="5" y="5" width="5" height="1.5" rx="0.75" fill="currentColor"/>
+                        <rect x="15" y="5" width="19" height="45" rx="4" fill="#fbfbfd" stroke="currentColor" stroke-width="1.6"/>
+                        <rect x="18" y="8" width="9" height="10" rx="2.5" stroke="currentColor" stroke-width="1.2"/>
+                        <circle cx="20.5" cy="10.5" r="1.2" fill="currentColor"/>
+                        <circle cx="20.5" cy="15" r="1.2" fill="currentColor"/>
+                        <circle cx="24.5" cy="12.8" r="1.2" fill="currentColor"/>
+                    </svg>
+                </div>
+                <span class="text-[11px] leading-tight text-apple-dark group-hover:text-apple-blue transition-colors">iPhone 17 Pro</span>
+                <span class="text-[9px] font-medium text-apple-orange mt-0.5">New</span>
+            </a>
+
+            <!-- iPhone 17 -->
+            <a href="#lineup" class="group flex flex-col items-center text-center w-16">
+                <div class="h-12 flex items-end justify-center mb-1.5">
+                    <svg class="w-8 h-11 text-apple-dark group-hover:scale-105 transition-transform" viewBox="0 0 36 52" fill="none">
+                        <rect x="3" y="4" width="14" height="46" rx="3.5" stroke="currentColor" stroke-width="1.6"/>
+                        <rect x="16" y="7" width="17" height="43" rx="3.8" fill="#fbfbfd" stroke="currentColor" stroke-width="1.6"/>
+                        <rect x="19" y="10" width="4.5" height="9" rx="2" stroke="currentColor" stroke-width="1.2"/>
+                        <circle cx="21.25" cy="12.3" r="1.1" fill="currentColor"/>
+                        <circle cx="21.25" cy="16.5" r="1.1" fill="currentColor"/>
+                    </svg>
+                </div>
+                <span class="text-[11px] leading-tight text-apple-dark group-hover:text-apple-blue transition-colors">iPhone 17</span>
+                <span class="text-[9px] font-medium text-apple-orange mt-0.5">New</span>
+            </a>
+
+            <!-- iPhone Air -->
+            <a href="#lineup" class="group flex flex-col items-center text-center w-16">
+                <div class="h-12 flex items-end justify-center mb-1.5">
+                    <svg class="w-7 h-11 text-apple-dark group-hover:scale-105 transition-transform" viewBox="0 0 32 52" fill="none">
+                        <rect x="7" y="3" width="18" height="47" rx="4" stroke="currentColor" stroke-width="1.5"/>
+                        <rect x="10" y="6.5" width="12" height="4" rx="2" stroke="currentColor" stroke-width="1.2"/>
+                        <circle cx="13" cy="8.5" r="1.1" fill="currentColor"/>
+                    </svg>
+                </div>
+                <span class="text-[11px] leading-tight text-apple-dark group-hover:text-apple-blue transition-colors">iPhone Air</span>
+                <span class="text-[9px] font-medium text-apple-orange mt-0.5">New</span>
+            </a>
+
+            <!-- iPhone 16 -->
+            <a href="#lineup" class="group flex flex-col items-center text-center w-16">
+                <div class="h-12 flex items-end justify-center mb-1.5">
+                    <svg class="w-7 h-11 text-apple-dark group-hover:scale-105 transition-transform" viewBox="0 0 32 52" fill="none">
+                        <rect x="7" y="6" width="18" height="44" rx="3.8" stroke="currentColor" stroke-width="1.5"/>
+                        <rect x="10" y="9" width="4.5" height="8.5" rx="2" stroke="currentColor" stroke-width="1.2"/>
+                        <circle cx="12.25" cy="11.2" r="1" fill="currentColor"/>
+                        <circle cx="12.25" cy="15.2" r="1" fill="currentColor"/>
+                    </svg>
+                </div>
+                <span class="text-[11px] leading-tight text-apple-dark group-hover:text-apple-blue transition-colors">iPhone 16</span>
+            </a>
+
+            <!-- iPhone 16e -->
+            <a href="#lineup" class="group flex flex-col items-center text-center w-16">
+                <div class="h-12 flex items-end justify-center mb-1.5">
+                    <svg class="w-7 h-11 text-apple-dark group-hover:scale-105 transition-transform" viewBox="0 0 32 52" fill="none">
+                        <rect x="8" y="9" width="16" height="41" rx="3.5" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="12" cy="13" r="1.5" stroke="currentColor" stroke-width="1.2"/>
+                    </svg>
+                </div>
+                <span class="text-[11px] leading-tight text-apple-dark group-hover:text-apple-blue transition-colors">iPhone 16e</span>
+            </a>
+
+            <!-- Compare -->
+            <a href="#lineup" class="group flex flex-col items-center text-center w-16">
+                <div class="h-12 flex items-end justify-center mb-1.5">
+                    <svg class="w-8 h-11 text-apple-dark group-hover:scale-105 transition-transform" viewBox="0 0 36 52" fill="none">
+                        <rect x="4" y="10" width="12" height="38" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+                        <rect x="20" y="6" width="12" height="42" rx="2.5" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <span class="text-[11px] leading-tight text-apple-dark group-hover:text-apple-blue transition-colors">Compare</span>
+            </a>
+
+            <!-- AirPods -->
+            <a href="#bento" class="group flex flex-col items-center text-center w-16">
+                <div class="h-12 flex items-end justify-center mb-1.5">
+                    <svg class="w-8 h-11 text-apple-dark group-hover:scale-105 transition-transform" viewBox="0 0 36 52" fill="none">
+                        <path d="M11 24a4 4 0 1 1 4 4v14h-2.5V28a4 4 0 0 1-1.5-4z" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M25 24a4 4 0 1 0-4 4v14h2.5V28a4 4 0 0 0 1.5-4z" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <span class="text-[11px] leading-tight text-apple-dark group-hover:text-apple-blue transition-colors">AirPods</span>
+            </a>
+
+            <!-- Accessories -->
+            <a href="#why-apple" class="group flex flex-col items-center text-center w-16">
+                <div class="h-12 flex items-end justify-center mb-1.5">
+                    <svg class="w-8 h-11 text-apple-dark group-hover:scale-105 transition-transform" viewBox="0 0 36 52" fill="none">
+                        <rect x="9" y="10" width="18" height="38" rx="4" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="18" cy="29" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+                        <path d="M18 33.5v4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <span class="text-[11px] leading-tight text-apple-dark group-hover:text-apple-blue transition-colors">Accessories</span>
+            </a>
+
+            <!-- iOS -->
+            <a href="#bento" class="group flex flex-col items-center text-center w-16">
+                <div class="h-12 flex items-end justify-center mb-1.5">
+                    <div class="w-8 h-8 mb-1 rounded-lg border-[1.5px] border-apple-dark flex items-center justify-center text-[10px] font-bold tracking-tighter group-hover:scale-105 transition-transform">
+                        iOS 19
+                    </div>
+                </div>
+                <span class="text-[11px] leading-tight text-apple-dark group-hover:text-apple-blue transition-colors">iOS</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Education / Trade-in Promo Banner -->
+    <div class="bg-apple-gray py-3 px-4 text-center text-[12px] sm:text-[13px] text-apple-dark">
+        Get $180–$650 in credit toward iPhone 17 or iPhone 17 Pro when you trade in iPhone 12 or higher.
+        <button onclick="openConfigurator('iPhone 17 Pro')" class="text-apple-blue hover:underline ml-1 inline-flex items-center">
+            Shop iPhone <span class="ml-0.5">&rsaquo;</span>
+        </button>
+    </div>
+
+    <!-- 3. FLAGSHIP HERO SECTION (iPhone 17 Pro) -->
+    <section id="hero" class="bg-black text-white pt-14 sm:pt-20 pb-16 sm:pb-24 px-4 overflow-hidden relative">
+        <!-- Ambient Radial Glow Behind Phone -->
+        <div id="hero-ambient-glow" class="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] h-[620px] rounded-full opacity-35 blur-[130px] transition-colors duration-700" style="background: radial-gradient(circle, #c5a889 0%, transparent 70%);"></div>
+
+        <div class="max-w-[1120px] mx-auto flex flex-col items-center text-center relative z-10">
+            <!-- Hero Header -->
+            <span class="text-xs sm:text-sm font-semibold tracking-widest uppercase text-[#d4b89c] mb-2">New</span>
+            <h1 class="text-4xl sm:text-6xl md:text-[68px] font-semibold tracking-tight leading-[1.05]">
+                iPhone 17 Pro
+            </h1>
+            <p class="mt-3 text-xl sm:text-3xl font-medium tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#f5e6d3] via-[#d7b99a] to-[#a6896b]">
+                Strength. Beauty. Titanium.
+            </p>
+            <p class="mt-2 text-sm sm:text-base text-neutral-400">
+                From $999 or $41.62/mo. for 24 mo.
+            </p>
+
+            <!-- Hero CTAs -->
+            <div class="mt-6 flex items-center justify-center gap-4">
+                <button onclick="openConfigurator('iPhone 17 Pro')" class="bg-apple-blue hover:bg-apple-blueHover text-white font-medium text-sm sm:text-base px-6 py-2.5 rounded-full transition-all shadow-lg shadow-apple-blue/25 active:scale-95">
+                    Buy
+                </button>
+                <a href="#bento" class="text-apple-blue hover:underline font-medium text-sm sm:text-base px-4 py-2.5 inline-flex items-center">
+                    Learn more <span class="ml-1 text-lg leading-none">&rsaquo;</span>
+                </a>
+            </div>
+
+            <!-- Interactive Realistic iPhone 17 Pro Hardware Mockup -->
+            <div class="mt-12 sm:mt-16 flex flex-col md:flex-row items-center justify-center gap-10 md:gap-16">
+                
+                <!-- Dual Perspective Mockup: Back Titanium & Front Super Retina XDR -->
+                <div class="relative flex items-center justify-center">
+                    
+                    <!-- Back View (Titanium Finish & Pro Camera System) -->
+                    <div id="hero-phone-back" class="iphone-chassis relative w-[220px] sm:w-[250px] h-[450px] sm:h-[510px] rounded-[44px] p-[6px] z-20 transition-all duration-500"
+                         style="background: linear-gradient(145deg, #d7c0a8 0%, #b5997d 50%, #8d735a 100%);">
+                        <!-- Inner Back Glass -->
+                        <div id="hero-phone-glass" class="w-full h-full rounded-[38px] relative overflow-hidden transition-all duration-500"
+                             style="background: linear-gradient(160deg, #cbb39b 0%, #b3987d 55%, #9d8268 100%);">
+                            
+                            <!-- Subtle Matte Sheen -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-black/15 via-transparent to-white/25 pointer-events-none"></div>
+
+                            <!-- Triple Camera Bump -->
+                            <div id="hero-camera-bump" class="absolute top-4 left-4 w-[104px] sm:w-[116px] h-[112px] sm:h-[124px] rounded-[28px] p-2.5 shadow-xl border border-white/20 backdrop-blur-md transition-colors duration-500"
+                                 style="background: rgba(168, 142, 116, 0.78);">
+                                <!-- Top-Left Lens (Main 48MP) -->
+                                <div class="camera-lens absolute top-2.5 left-2.5 w-10 sm:w-11 h-10 sm:h-11 rounded-full border-[2.5px] border-neutral-300/70"></div>
+                                <!-- Bottom-Left Lens (Ultra Wide) -->
+                                <div class="camera-lens absolute bottom-2.5 left-2.5 w-10 sm:w-11 h-10 sm:h-11 rounded-full border-[2.5px] border-neutral-300/70"></div>
+                                <!-- Middle-Right Lens (5x Tetraprism Telephoto) -->
+                                <div class="camera-lens absolute top-1/2 -translate-y-1/2 right-2.5 w-10 sm:w-11 h-10 sm:h-11 rounded-full border-[2.5px] border-neutral-300/70"></div>
+                                <!-- True Tone Flash -->
+                                <div class="absolute top-3 right-4 w-3.5 h-3.5 rounded-full bg-amber-100/90 border border-neutral-400/50 shadow-inner"></div>
+                                <!-- LiDAR Scanner -->
+                                <div class="absolute bottom-3 right-4 w-3.5 h-3.5 rounded-full bg-neutral-900 border border-neutral-500/40"></div>
+                            </div>
+
+                            <!-- Centered Apple Logo on Back Glass -->
+                            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-35">
+                                <svg class="w-11 h-11 fill-white drop-shadow" viewBox="0 0 17 48">
+                                    <path d="m15.5752 19.0792a4.2055 4.2055 0 0 0 -2.01 3.5376 4.0931 4.0931 0 0 0 2.4908 3.7542 9.7779 9.7779 0 0 1 -1.2755 2.6351c-.7941 1.1431-1.6244 2.2862-2.8878 2.2862s-1.5883-.734-3.0443-.734c-1.42 0-1.9252.7581-3.08.7581s-1.9611-1.0589-2.8876-2.3584a11.3987 11.3987 0 0 1 -1.9373-6.1487c0-3.61 2.3464-5.523 4.6566-5.523 1.2274 0 2.25.8062 3.02.8062.734 0 1.8771-.8543 3.2729-.8543a4.3778 4.3778 0 0 1 3.6822 1.841zm-6.8586-2.0456a1.3865 1.3865 0 0 1 -.2527-.024 1.6557 1.6557 0 0 1 -.0361-.337 4.0341 4.0341 0 0 1 1.0228-2.5148 4.1571 4.1571 0 0 1 2.7314-1.4078 1.7815 1.7815 0 0 1 .0361.373 4.1487 4.1487 0 0 1 -.9867 2.587 3.6039 3.6039 0 0 1 -2.5148 1.3236z"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <!-- Side Buttons (Titanium) -->
+                        <div class="absolute -left-[3px] top-24 w-[3px] h-7 bg-white/40 rounded-l"></div>
+                        <div class="absolute -left-[3px] top-36 w-[3px] h-12 bg-white/40 rounded-l"></div>
+                        <div class="absolute -left-[3px] top-52 w-[3px] h-12 bg-white/40 rounded-l"></div>
+                        <!-- Camera Control Button on Right Edge -->
+                        <div class="absolute -right-[3px] top-44 w-[3px] h-14 bg-white/50 rounded-r"></div>
+                    </div>
+
+                    <!-- Front Display Preview (Overlapping slightly on Desktop) -->
+                    <div id="hero-phone-front" class="hidden sm:flex iphone-chassis -ml-10 mt-10 w-[230px] h-[475px] rounded-[42px] p-[5px] z-10 flex-col"
+                         style="background: linear-gradient(145deg, #d7c0a8 0%, #9c8167 100%);">
+                        <div class="w-full h-full bg-black rounded-[37px] p-[4px] relative overflow-hidden">
+                            <!-- OLED Wallpaper Screen -->
+                            <div id="hero-wallpaper" class="w-full h-full rounded-[33px] relative overflow-hidden flex flex-col justify-between p-4 transition-all duration-700"
+                                 style="background: radial-gradient(circle at 50% 30%, #8c694a 0%, #3a2819 55%, #090706 100%);">
+                                
+                                <!-- Dynamic Island -->
+                                <div class="mx-auto w-24 h-6 bg-black rounded-full flex items-center justify-between px-2.5 shadow-md border border-white/5">
+                                    <div class="w-2 h-2 rounded-full bg-[#142038] ring-1 ring-blue-400/30"></div>
+                                    <div class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></div>
+                                </div>
+
+                                <!-- Lock Screen Time -->
+                                <div class="text-center -mt-4">
+                                    <p class="text-[11px] font-medium text-white/75">Tuesday, November 17</p>
+                                    <p class="text-5xl font-bold tracking-tight text-white/95 leading-none mt-0.5">9:41</p>
+                                </div>
+
+                                <!-- Apple Intelligence Siri Glow Bar -->
+                                <div class="mt-auto mb-2">
+                                    <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 text-left">
+                                        <div class="flex items-center gap-1.5">
+                                            <span class="w-2 h-2 rounded-full bg-gradient-to-r from-sky-400 via-purple-400 to-amber-300"></span>
+                                            <span class="text-[10px] font-semibold text-white/90">Apple Intelligence</span>
+                                        </div>
+                                        <p class="text-[10px] text-white/70 mt-0.5 leading-snug">A19 Pro with 6-core GPU. Built for pro workflows.</p>
+                                    </div>
+                                    <div class="mx-auto mt-3 w-24 h-1 bg-white/80 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Color Finish Switcher -->
+            <div class="mt-10 flex flex-col items-center">
+                <p id="hero-color-label" class="text-xs sm:text-sm font-medium text-neutral-300 mb-3.5">
+                    6.9″ or 6.3″ display in <span class="text-white font-semibold">Desert Titanium</span>
+                </p>
+                <div class="inline-flex items-center gap-3.5 bg-white/10 backdrop-blur-md px-4 py-2.5 rounded-full border border-white/10">
+                    <button onclick="setHeroFinish('desert')" id="swatch-desert" aria-label="Desert Titanium"
+                            class="w-7 h-7 rounded-full ring-2 ring-offset-2 ring-offset-black ring-white transition-transform hover:scale-110"
+                            style="background: linear-gradient(135deg, #dcc4ab, #a4876b);"></button>
+                    <button onclick="setHeroFinish('natural')" id="swatch-natural" aria-label="Natural Titanium"
+                            class="w-7 h-7 rounded-full ring-offset-2 ring-offset-black ring-transparent transition-transform hover:scale-110"
+                            style="background: linear-gradient(135deg, #d2cfc8, #9b978e);"></button>
+                    <button onclick="setHeroFinish('white')" id="swatch-white" aria-label="White Titanium"
+                            class="w-7 h-7 rounded-full ring-offset-2 ring-offset-black ring-transparent transition-transform hover:scale-110"
+                            style="background: linear-gradient(135deg, #f7f7f5, #d6d6d2);"></button>
+                    <button onclick="setHeroFinish('black')" id="swatch-black" aria-label="Black Titanium"
+                            class="w-7 h-7 rounded-full ring-offset-2 ring-offset-black ring-transparent transition-transform hover:scale-110"
+                            style="background: linear-gradient(135deg, #4a4a4d, #1c1c1e);"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. "GET TO KNOW iPHONE" HORIZONTAL BENTO FEATURE CARDS -->
+    <section id="bento" class="py-20 sm:py-28 bg-white">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-10 sm:mb-12">
+                <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-apple-dark">
+                    Get to know iPhone.
+                </h2>
+                <div class="hidden sm:flex items-center gap-3 mt-4 sm:mt-0">
+                    <button onclick="scrollBento(-380)" aria-label="Scroll left" class="w-9 h-9 rounded-full bg-apple-gray hover:bg-neutral-200 flex items-center justify-center text-apple-dark transition-colors">
+                        &lsaquo;
+                    </button>
+                    <button onclick="scrollBento(380)" aria-label="Scroll right" class="w-9 h-9 rounded-full bg-apple-gray hover:bg-neutral-200 flex items-center justify-center text-apple-dark transition-colors">
+                        &rsaquo;
+                    </button>
+                </div>
+            </div>
+
+            <!-- Horizontal Scrollable Bento Track -->
+            <div id="bento-track" class="flex gap-6 overflow-x-auto no-scrollbar pb-6 snap-x snap-mandatory">
+                
+                <!-- Card 1: Apple Intelligence -->
+                <div onclick="openFeatureModal('ai')" class="snap-start shrink-0 w-[300px] sm:w-[372px] h-[520px] sm:h-[580px] rounded-[28px] bg-black text-white p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden cursor-pointer group hover:scale-[1.01] transition-transform duration-300 shadow-lg">
+                    <div class="relative z-10">
+                        <p class="text-xs sm:text-sm font-semibold text-neutral-300">Apple Intelligence</p>
+                        <h3 class="text-2xl sm:text-[28px] font-semibold leading-tight mt-1.5">
+                            AI-opening possibilities.
+                        </h3>
+                    </div>
+
+                    <!-- Custom Glowing UI Visual -->
+                    <div class="my-auto relative z-10 flex flex-col items-center">
+                        <div class="w-full rounded-2xl bg-neutral-900/90 border border-white/15 p-4 ai-border-glow shadow-2xl">
+                            <div class="flex items-center gap-2 mb-2.5">
+                                <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500"></div>
+                                <span class="text-xs font-medium text-neutral-300">Writing Tools &bull; Rewrite</span>
+                            </div>
+                            <p class="text-sm text-white/95 font-normal leading-relaxed">
+                                “Summarize my Tokyo itinerary and highlight the best matcha spots near Shibuya.”
+                            </p>
+                            <div class="mt-3 flex gap-2">
+                                <span class="text-[11px] bg-white/10 px-2.5 py-1 rounded-full text-sky-300">Friendly</span>
+                                <span class="text-[11px] bg-white/10 px-2.5 py-1 rounded-full text-purple-300">Concise</span>
+                                <span class="text-[11px] bg-white/10 px-2.5 py-1 rounded-full text-pink-300">Key Points</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 flex justify-end">
+                        <span class="w-9 h-9 rounded-full bg-white/20 group-hover:bg-white group-hover:text-black flex items-center justify-center text-xl font-light transition-colors">+</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Cutting-Edge Cameras -->
+                <div onclick="openFeatureModal('camera')" class="snap-start shrink-0 w-[300px] sm:w-[372px] h-[520px] sm:h-[580px] rounded-[28px] bg-[#14171f] text-white p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden cursor-pointer group hover:scale-[1.01] transition-transform duration-300 shadow-lg">
+                    <div class="relative z-10">
+                        <p class="text-xs sm:text-sm font-semibold text-neutral-300">Cutting-Edge Cameras</p>
+                        <h3 class="text-2xl sm:text-[28px] font-semibold leading-tight mt-1.5">
+                            Picture your best photos and videos.
+                        </h3>
+                    </div>
+
+                    <!-- Camera Lens & Viewfinder UI Visual -->
+                    <div class="my-auto relative flex flex-col items-center">
+                        <div class="w-44 h-44 rounded-full bg-gradient-to-b from-neutral-700 to-neutral-950 p-3 shadow-2xl border border-white/15 flex items-center justify-center">
+                            <div class="camera-lens w-full h-full rounded-full relative"></div>
+                        </div>
+                        <div class="mt-5 flex items-center gap-3 bg-black/60 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/10 text-xs font-medium">
+                            <span class="text-neutral-400">.5x</span>
+                            <span class="text-amber-400 font-bold bg-white/10 px-2 py-0.5 rounded-full">1x</span>
+                            <span class="text-neutral-400">2x</span>
+                            <span class="text-neutral-400">5x</span>
+                        </div>
+                    </div>
+
+                    <div class="relative z-10 flex justify-end">
+                        <span class="w-9 h-9 rounded-full bg-white/20 group-hover:bg-white group-hover:text-black flex items-center justify-center text-xl font-light transition-colors">+</span>
+                    </div>
+                </div>
+
+                <!-- Card 3: Chip and Battery Life -->
+                <div onclick="openFeatureModal('chip')" class="snap-start shrink-0 w-[300px] sm:w-[372px] h-[520px] sm:h-[580px] rounded-[28px] bg-[#0b0f17] text-white p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden cursor-pointer group hover:scale-[1.01] transition-transform duration-300 shadow-lg">
+                    <div class="relative z-10">
+                        <p class="text-xs sm:text-sm font-semibold text-neutral-300">Chip and Battery Life</p>
+                        <h3 class="text-2xl sm:text-[28px] font-semibold leading-tight mt-1.5">
+                            Fast that lasts.
+                        </h3>
+                    </div>
+
+                    <!-- A19 Pro Silicon Die Visual -->
+                    <div class="my-auto flex flex-col items-center">
+                        <div class="w-40 h-40 rounded-3xl bg-gradient-to-br from-neutral-800 via-neutral-900 to-black border border-amber-400/40 shadow-[0_0_50px_rgba(245,158,11,0.2)] flex flex-col items-center justify-center relative">
+                            <svg class="w-10 h-10 fill-white/90 mb-1" viewBox="0 0 17 48">
+                                <path d="m15.5752 19.0792a4.2055 4.2055 0 0 0 -2.01 3.5376 4.0931 4.0931 0 0 0 2.4908 3.7542 9.7779 9.7779 0 0 1 -1.2755 2.6351c-.7941 1.1431-1.6244 2.2862-2.8878 2.2862s-1.5883-.734-3.0443-.734c-1.42 0-1.9252.7581-3.08.7581s-1.9611-1.0589-2.8876-2.3584a11.3987 11.3987 0 0 1 -1.9373-6.1487c0-3.61 2.3464-5.523 4.6566-5.523 1.2274 0 2.25.8062 3.02.8062.734 0 1.8771-.8543 3.2729-.8543a4.3778 4.3778 0 0 1 3.6822 1.841zm-6.8586-2.0456a1.3865 1.3865 0 0 1 -.2527-.024 1.6557 1.6557 0 0 1 -.0361-.337 4.0341 4.0341 0 0 1 1.0228-2.5148 4.1571 4.1571 0 0 1 2.7314-1.4078 1.7815 1.7815 0 0 1 .0361.373 4.1487 4.1487 0 0 1 -.9867 2.587 3.6039 3.6039 0 0 1 -2.5148 1.3236z"></path>
+                            </svg>
+                            <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-amber-200 to-amber-500 bg-clip-text text-transparent">A19 PRO</span>
+                            <span class="text-[10px] text-neutral-400 mt-1">3nm Second-Gen Architecture</span>
+                        </div>
+                        <p class="mt-4 text-xs text-emerald-400 font-medium">Up to 33 hours video playback</p>
+                    </div>
+
+                    <div class="relative z-10 flex justify-end">
+                        <span class="w-9 h-9 rounded-full bg-white/20 group-hover:bg-white group-hover:text-black flex items-center justify-center text-xl font-light transition-colors">+</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Innovation & Titanium Design -->
+                <div onclick="openFeatureModal('design')" class="snap-start shrink-0 w-[300px] sm:w-[372px] h-[520px] sm:h-[580px] rounded-[28px] bg-apple-gray text-apple-dark p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden cursor-pointer group hover:scale-[1.01] transition-transform duration-300 shadow-sm border border-black/5">
+                    <div class="relative z-10">
+                        <p class="text-xs sm:text-sm font-semibold text-apple-subtext">Innovation</p>
+                        <h3 class="text-2xl sm:text-[28px] font-semibold leading-tight mt-1.5">
+                            Beautiful and durable, by design.
+                        </h3>
+                    </div>
+
+                    <!-- Grade 5 Titanium & Ceramic Shield Graphic -->
+                    <div class="my-auto flex flex-col items-center">
+                        <div class="w-56 h-28 rounded-2xl bg-gradient-to-r from-[#d6c2ae] via-[#f2ece4] to-[#b59f89] shadow-xl border border-white flex items-center justify-center">
+                            <span class="text-xs font-semibold tracking-widest uppercase text-neutral-700">Grade 5 Titanium</span>
+                        </div>
+                        <p class="mt-4 text-xs text-apple-subtext text-center max-w-[230px]">
+                            Latest-generation Ceramic Shield front is 2x tougher than any smartphone glass.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 flex justify-end">
+                        <span class="w-9 h-9 rounded-full bg-apple-dark text-white group-hover:bg-apple-blue flex items-center justify-center text-xl font-light transition-colors">+</span>
+                    </div>
+                </div>
+
+                <!-- Card 5: Privacy -->
+                <div onclick="openFeatureModal('privacy')" class="snap-start shrink-0 w-[300px] sm:w-[372px] h-[520px] sm:h-[580px] rounded-[28px] bg-[#1d1d1f] text-white p-7 sm:p-8 flex flex-col justify-between relative overflow-hidden cursor-pointer group hover:scale-[1.01] transition-transform duration-300 shadow-lg">
+                    <div class="relative z-10">
+                        <p class="text-xs sm:text-sm font-semibold text-neutral-400">Privacy</p>
+                        <h3 class="text-2xl sm:text-[28px] font-semibold leading-tight mt-1.5">
+                            Your data. Just where you want it.
+                        </h3>
+                    </div>
+
+                    <div class="my-auto flex flex-col items-center">
+                        <div class="w-24 h-24 rounded-3xl bg-apple-blue/20 border border-apple-blue/40 flex items-center justify-center">
+                            <svg class="w-12 h-12 text-apple-blue" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <rect x="5" y="11" width="14" height="10" rx="2.5"></rect>
+                                <path d="M8 11V7a4 4 0 018 0v4"></path>
+                            </svg>
+                        </div>
+                        <p class="mt-4 text-xs text-neutral-400 text-center max-w-[220px]">
+                            Private Cloud Compute protects your personal intelligence requests end-to-end.
+                        </p>
+                    </div>
+
+                    <div class="relative z-10 flex justify-end">
+                        <span class="w-9 h-9 rounded-full bg-white/20 group-hover:bg-white group-hover:text-black flex items-center justify-center text-xl font-light transition-colors">+</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. "EXPLORE THE LINEUP" INTERACTIVE MODEL COMPARISON GRID -->
+    <section id="lineup" class="py-20 sm:py-28 bg-apple-gray">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14">
+                <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-apple-dark">
+                    Explore the lineup.
+                </h2>
+                <button onclick="openConfigurator('iPhone 17 Pro')" class="text-apple-blue hover:underline font-medium text-sm sm:text-base mt-3 sm:mt-0 inline-flex items-center">
+                    Compare all models <span class="ml-1 text-lg">&rsaquo;</span>
+                </button>
+            </div>
+
+            <!-- 4-Column Responsive Lineup Grid -->
+            <div id="lineup-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Populated dynamically via JS for live swatch switching -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. "WHY APPLE IS THE BEST PLACE TO BUY iPHONE" CARDS -->
+    <section id="why-apple" class="py-20 sm:py-28 bg-white">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
+                <h2 class="text-3xl sm:text-5xl font-semibold tracking-tight text-apple-dark max-w-xl leading-[1.08]">
+                    Why Apple is the best place to buy iPhone.
+                </h2>
+                <a href="#lineup" class="text-apple-blue hover:underline font-medium text-sm sm:text-base mt-3 sm:mt-0 inline-flex items-center">
+                    Shop iPhone <span class="ml-1 text-lg">&rsaquo;</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1: Trade In -->
+                <div class="bg-apple-gray rounded-[28px] p-7 flex flex-col justify-between min-h-[290px] hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-apple-blue mb-5 shadow-xs">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h5M20 20v-5h-5M4 9a9 9 0 0114.6-3.4L20 7M20 15a9 9 0 01-14.6 3.4L4 17"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-apple-dark leading-snug">
+                            Save with Apple Trade In.
+                        </h3>
+                        <p class="text-sm text-apple-subtext mt-2.5 leading-relaxed">
+                            Get $180–$650 in credit toward iPhone 17 or iPhone 17 Pro when you trade in iPhone 12 or higher.
+                        </p>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="openConfigurator('iPhone 17 Pro')" aria-label="Learn about Trade In" class="w-8 h-8 rounded-full bg-apple-dark text-white hover:bg-apple-blue flex items-center justify-center text-lg transition-colors">+</button>
+                    </div>
+                </div>
+
+                <!-- Card 2: Apple Card Monthly Installments -->
+                <div class="bg-apple-gray rounded-[28px] p-7 flex flex-col justify-between min-h-[290px] hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-apple-blue mb-5 shadow-xs">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <rect x="2" y="5" width="20" height="14" rx="2.5"></rect>
+                                <path d="M2 10h20"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-apple-dark leading-snug">
+                            Pay over time, interest-free.
+                        </h3>
+                        <p class="text-sm text-apple-subtext mt-2.5 leading-relaxed">
+                            When you choose to check out with Apple Card Monthly Installments, you get 0% APR and 3% Daily Cash back.
+                        </p>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="openConfigurator('iPhone 17')" aria-label="Learn about Financing" class="w-8 h-8 rounded-full bg-apple-dark text-white hover:bg-apple-blue flex items-center justify-center text-lg transition-colors">+</button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Carrier Deals -->
+                <div class="bg-apple-gray rounded-[28px] p-7 flex flex-col justify-between min-h-[290px] hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-apple-blue mb-5 shadow-xs">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.5 14.5A5 5 0 0115.5 14.5M5 11a10 10 0 0114 0M12 18h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-apple-dark leading-snug">
+                            Carrier deals at Apple.
+                        </h3>
+                        <p class="text-sm text-apple-subtext mt-2.5 leading-relaxed">
+                            Get up to $800 in bill credits on AT&amp;T, T-Mobile, or Verizon. Ready to activate with eSIM right out of the box.
+                        </p>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="openConfigurator('iPhone Air')" aria-label="Learn about Carrier Deals" class="w-8 h-8 rounded-full bg-apple-dark text-white hover:bg-apple-blue flex items-center justify-center text-lg transition-colors">+</button>
+                    </div>
+                </div>
+
+                <!-- Card 4: Free Delivery & Specialist Support -->
+                <div class="bg-apple-gray rounded-[28px] p-7 flex flex-col justify-between min-h-[290px] hover:shadow-md transition-shadow">
+                    <div>
+                        <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-apple-blue mb-5 shadow-xs">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-semibold text-apple-dark leading-snug">
+                            Get flexible delivery and easy pickup.
+                        </h3>
+                        <p class="text-sm text-apple-subtext mt-2.5 leading-relaxed">
+                            Choose two-hour courier delivery from an Apple Store, free delivery, or easy pickup options with Specialist setup.
+                        </p>
+                    </div>
+                    <div class="mt-6 flex justify-end">
+                        <button onclick="openConfigurator('iPhone 17 Pro')" aria-label="Learn about Delivery" class="w-8 h-8 rounded-full bg-apple-dark text-white hover:bg-apple-blue flex items-center justify-center text-lg transition-colors">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. AUTHENTIC APPLE MULTI-COLUMN FOOTER -->
+    <footer id="footer" class="bg-apple-gray text-apple-subtext text-[12px] leading-relaxed border-t border-black/[0.08]">
+        <div class="max-w-[1024px] mx-auto px-4 sm:px-6 py-10">
+            <!-- Legal Footnotes -->
+            <div class="space-y-2.5 pb-6 border-b border-black/[0.08]">
+                <p>1. Trade-in values will vary based on the condition, year, and configuration of your eligible trade-in device. Not all devices are eligible for credit. You must be at least 18 years old to be eligible to trade in for credit or for an Apple Gift Card.</p>
+                <p>2. Apple Intelligence is available in beta on all iPhone 17 models, iPhone Air, iPhone 16, and iPhone 15 Pro models, with Siri and device language set to English.</p>
+                <p>3. Monthly pricing is available when you select Apple Card Monthly Installments (ACMI) as payment type at checkout at Apple, and is subject to credit approval and credit limit. 0% APR.</p>
+            </div>
+
+            <!-- Breadcrumb -->
+            <div class="py-4 flex items-center space-x-2 text-apple-dark/80">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 17 48">
+                    <path d="m15.5752 19.0792a4.2055 4.2055 0 0 0 -2.01 3.5376 4.0931 4.0931 0 0 0 2.4908 3.7542 9.7779 9.7779 0 0 1 -1.2755 2.6351c-.7941 1.1431-1.6244 2.2862-2.8878 2.2862s-1.5883-.734-3.0443-.734c-1.42 0-1.9252.7581-3.08.7581s-1.9611-1.0589-2.8876-2.3584a11.3987 11.3987 0 0 1 -1.9373-6.1487c0-3.61 2.3464-5.523 4.6566-5.523 1.2274 0 2.25.8062 3.02.8062.734 0 1.8771-.8543 3.2729-.8543a4.3778 4.3778 0 0 1 3.6822 1.841zm-6.8586-2.0456a1.3865 1.3865 0 0 1 -.2527-.024 1.6557 1.6557 0 0 1 -.0361-.337 4.0341 4.0341 0 0 1 1.0228-2.5148 4.1571 4.1571 0 0 1 2.7314-1.4078 1.7815 1.7815 0 0 1 .0361.373 4.1487 4.1487 0 0 1 -.9867 2.587 3.6039 3.6039 0 0 1 -2.5148 1.3236z"></path>
+                </svg>
+                <span>&rsaquo;</span>
+                <span>iPhone</span>
+            </div>
+
+            <!-- Directory Columns -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 py-4">
+                <div>
+                    <h4 class="font-semibold text-apple-dark mb-2">Shop and Learn</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#lineup" class="hover:underline">Store</a></li>
+                        <li><a href="#bento" class="hover:underline">Mac</a></li>
+                        <li><a href="#bento" class="hover:underline">iPad</a></li>
+                        <li><a href="#hero" class="hover:underline">iPhone</a></li>
+                        <li><a href="#bento" class="hover:underline">Watch</a></li>
+                        <li><a href="#bento" class="hover:underline">AirPods</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-apple-dark mb-2">Account</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#" class="hover:underline">Manage Your Apple Account</a></li>
+                        <li><a href="#" class="hover:underline">Apple Store Account</a></li>
+                        <li><a href="#" class="hover:underline">iCloud.com</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-apple-dark mb-2">Apple Store</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#why-apple" class="hover:underline">Find a Store</a></li>
+                        <li><a href="#why-apple" class="hover:underline">Genius Bar</a></li>
+                        <li><a href="#why-apple" class="hover:underline">Today at Apple</a></li>
+                        <li><a href="#why-apple" class="hover:underline">Apple Trade In</a></li>
+                        <li><a href="#why-apple" class="hover:underline">Financing</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-apple-dark mb-2">For Business</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#" class="hover:underline">Apple and Business</a></li>
+                        <li><a href="#" class="hover:underline">Shop for Business</a></li>
+                    </ul>
+                    <h4 class="font-semibold text-apple-dark mt-4 mb-2">For Education</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#" class="hover:underline">Apple and Education</a></li>
+                        <li><a href="#" class="hover:underline">Shop for College</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-apple-dark mb-2">Apple Values</h4>
+                    <ul class="space-y-1.5">
+                        <li><a href="#bento" class="hover:underline">Accessibility</a></li>
+                        <li><a href="#bento" class="hover:underline">Environment</a></li>
+                        <li><a href="#bento" class="hover:underline">Privacy</a></li>
+                        <li><a href="#bento" class="hover:underline">Supply Chain</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-6 mt-4 border-t border-black/[0.08] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <p>Copyright &copy; 2026 Apple Inc. All rights reserved.</p>
+                <div class="flex flex-wrap gap-x-4 gap-y-1 text-apple-dark/80">
+                    <a href="#" class="hover:underline">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="#" class="hover:underline">Terms of Use</a>
+                    <span>|</span>
+                    <a href="#" class="hover:underline">Sales and Refunds</a>
+                    <span>|</span>
+                    <a href="#" class="hover:underline">Legal</a>
+                    <span>|</span>
+                    <a href="#" class="hover:underline">Site Map</a>
+                </div>
+                <p class="text-apple-dark/80">United States</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- INTERACTIVE MODALS & DRAWERS (Configurator, Bento Detail, Bag, Search) -->
+    <!-- ===================================================================== -->
+
+    <!-- A. APPLE STORE iPHONE CONFIGURATOR MODAL -->
+    <div id="configurator-modal" class="hidden fixed inset-0 z-50 bg-black/50 modal-backdrop flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-[28px] max-w-3xl w-full p-6 sm:p-8 shadow-2xl relative my-auto max-h-[92vh] overflow-y-auto">
+            <button onclick="closeConfigurator()" aria-label="Close configurator" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-apple-gray hover:bg-neutral-200 flex items-center justify-center text-apple-dark text-xl">
+                &times;
+            </button>
+
+            <span class="text-xs font-semibold uppercase tracking-wider text-apple-orange">New</span>
+            <h3 id="cfg-title" class="text-2xl sm:text-3xl font-semibold text-apple-dark mt-0.5">Buy iPhone 17 Pro</h3>
+            <p id="cfg-subtitle" class="text-sm text-apple-subtext mt-1">From $999 or $41.62/mo. for 24 mo.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                <!-- Left Live Visual Preview -->
+                <div class="bg-apple-gray rounded-2xl p-6 flex flex-col items-center justify-center min-h-[280px]">
+                    <div id="cfg-phone-preview" class="w-36 h-72 rounded-[30px] p-1.5 shadow-xl transition-all duration-300 relative"
+                         style="background: linear-gradient(145deg, #d7c0a8, #9c8167);">
+                        <div id="cfg-phone-back" class="w-full h-full rounded-[25px] relative overflow-hidden"
+                             style="background: linear-gradient(160deg, #cbb39b, #9d8268);">
+                            <div class="absolute top-3 left-3 w-14 h-16 rounded-2xl bg-black/15 border border-white/25 p-1.5">
+                                <div class="camera-lens w-5 h-5 rounded-full"></div>
+                                <div class="camera-lens w-5 h-5 rounded-full mt-1.5"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="cfg-selected-finish-label" class="text-xs font-medium text-apple-dark mt-4">Finish: Desert Titanium</p>
+                </div>
+
+                <!-- Right Configuration Options -->
+                <div class="space-y-5">
+                    <!-- 1. Choose Model -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-apple-subtext mb-2">1. Model</label>
+                        <div id="cfg-model-options" class="grid grid-cols-2 gap-2.5"></div>
+                    </div>
+
+                    <!-- 2. Choose Finish -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-apple-subtext mb-2">2. Finish</label>
+                        <div id="cfg-finish-options" class="flex flex-wrap gap-2.5"></div>
+                    </div>
+
+                    <!-- 3. Choose Storage -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-apple-subtext mb-2">3. Storage</label>
+                        <div id="cfg-storage-options" class="grid grid-cols-3 gap-2"></div>
+                    </div>
+
+                    <!-- 4. Apple Trade In -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-apple-subtext mb-2">4. Apple Trade In</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button type="button" onclick="setCfgTradeIn(false)" id="tradein-no" class="p-3 rounded-xl border-2 border-apple-blue bg-apple-blue/5 text-left text-xs">
+                                <span class="font-semibold block text-apple-dark">No trade-in</span>
+                                <span class="text-apple-subtext">Full price</span>
+                            </button>
+                            <button type="button" onclick="setCfgTradeIn(true)" id="tradein-yes" class="p-3 rounded-xl border border-neutral-300 text-left text-xs">
+                                <span class="font-semibold block text-apple-dark">Select a smartphone</span>
+                                <span class="text-emerald-700 font-medium">Save up to $400</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Summary & Add to Bag -->
+                    <div class="pt-4 border-t border-neutral-200 flex items-center justify-between">
+                        <div>
+                            <p id="cfg-total-price" class="text-2xl font-semibold text-apple-dark">$999</p>
+                            <p id="cfg-monthly-price" class="text-xs text-apple-subtext">or $41.62/mo. for 24 mo.</p>
+                        </div>
+                        <button onclick="addConfiguredToBag()" class="bg-apple-blue hover:bg-apple-blueHover text-white font-medium text-sm px-6 py-3 rounded-full transition-colors">
+                            Add to Bag
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- B. BENTO FEATURE DETAIL MODAL -->
+    <div id="feature-modal" class="hidden fixed inset-0 z-50 bg-black/50 modal-backdrop flex items-center justify-center p-4">
+        <div class="bg-white rounded-[28px] max-w-xl w-full p-7 sm:p-9 shadow-2xl relative">
+            <button onclick="closeFeatureModal()" aria-label="Close detail" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-apple-gray hover:bg-neutral-200 flex items-center justify-center text-apple-dark text-xl">
+                &times;
+            </button>
+            <p id="feat-tag" class="text-xs font-semibold uppercase tracking-wider text-apple-blue">Apple Intelligence</p>
+            <h3 id="feat-title" class="text-2xl sm:text-3xl font-semibold text-apple-dark mt-1 leading-tight">AI-opening possibilities.</h3>
+            <p id="feat-body" class="text-sm sm:text-base text-apple-subtext mt-4 leading-relaxed"></p>
+            <div id="feat-highlights" class="mt-6 space-y-2.5 bg-apple-gray rounded-2xl p-4 text-xs sm:text-sm text-apple-dark"></div>
+        </div>
+    </div>
+
+    <!-- C. SHOPPING BAG SLIDE-OVER DRAWER -->
+    <div id="bag-drawer" class="hidden fixed inset-0 z-50 bg-black/40 modal-backdrop flex justify-end">
+        <div class="bg-white w-full max-w-md h-full p-6 sm:p-8 flex flex-col justify-between shadow-2xl">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-neutral-200">
+                    <h3 class="text-xl font-semibold text-apple-dark">Your Bag</h3>
+                    <button onclick="toggleBagDrawer()" class="w-8 h-8 rounded-full bg-apple-gray hover:bg-neutral-200 flex items-center justify-center text-lg">&times;</button>
+                </div>
+                <div id="bag-items-container" class="mt-6 space-y-4 max-h-[60vh] overflow-y-auto pr-1">
+                    <!-- Bag items injected here -->
+                </div>
+            </div>
+
+            <div id="bag-footer" class="pt-4 border-t border-neutral-200 hidden">
+                <div class="flex justify-between text-sm text-apple-subtext mb-1">
+                    <span>Shipping</span>
+                    <span class="text-apple-dark font-medium">FREE</span>
+                </div>
+                <div class="flex justify-between text-lg font-semibold text-apple-dark mb-4">
+                    <span>Total</span>
+                    <span id="bag-total-amount">$0</span>
+                </div>
+                <button onclick="checkoutSuccess()" class="w-full bg-apple-blue hover:bg-apple-blueHover text-white font-medium py-3 rounded-full transition-colors">
+                    Check Out
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- D. QUICK SEARCH OVERLAY -->
+    <div id="search-modal" class="hidden fixed inset-0 z-50 bg-black/40 modal-backdrop flex items-start justify-center pt-16 p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl">
+            <div class="flex items-center gap-3 border-b border-neutral-200 pb-3">
+                <svg class="w-5 h-5 text-apple-subtext" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <path stroke-linecap="round" d="M20 20l-3.5-3.5"></path>
+                </svg>
+                <input id="search-input" type="text" placeholder="Search apple.com" class="w-full text-base outline-none text-apple-dark" oninput="filterQuickLinks(this.value)">
+                <button onclick="toggleSearchModal()" class="text-sm text-apple-subtext hover:text-black">Cancel</button>
+            </div>
+            <div class="mt-4">
+                <p class="text-[11px] font-semibold uppercase tracking-wider text-apple-subtext mb-2">Quick Links</p>
+                <ul id="search-links" class="space-y-2 text-sm text-apple-dark">
+                    <li><button onclick="toggleSearchModal(); openConfigurator('iPhone 17 Pro');" class="hover:text-apple-blue">&rarr; Buy iPhone 17 Pro</button></li>
+                    <li><button onclick="toggleSearchModal(); openConfigurator('iPhone Air');" class="hover:text-apple-blue">&rarr; Explore iPhone Air</button></li>
+                    <li><button onclick="toggleSearchModal(); openConfigurator('iPhone 17');" class="hover:text-apple-blue">&rarr; Shop iPhone 17</button></li>
+                    <li><a href="#why-apple" onclick="toggleSearchModal()" class="hover:text-apple-blue">&rarr; Apple Trade In Credit</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- E. NON-INTRUSIVE TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-apple-dark text-white text-xs sm:text-sm font-medium px-5 py-3 rounded-full shadow-xl opacity-0 pointer-events-none transition-opacity duration-300">
+        Added to your Bag.
+    </div>
+
+    <script>
+        /* =====================================================================
+           DATA MODELS & STATE
+           ===================================================================== */
+        const heroFinishes = {
+            desert: {
+                name: 'Desert Titanium',
+                chassis: 'linear-gradient(145deg, #d7c0a8 0%, #b5997d 50%, #8d735a 100%)',
+                glass: 'linear-gradient(160deg, #cbb39b 0%, #b3987d 55%, #9d8268 100%)',
+                bump: 'rgba(168, 142, 116, 0.78)',
+                wallpaper: 'radial-gradient(circle at 50% 30%, #8c694a 0%, #3a2819 55%, #090706 100%)',
+                glow: '#c5a889'
+            },
+            natural: {
+                name: 'Natural Titanium',
+                chassis: 'linear-gradient(145deg, #d4d1ca 0%, #aba79e 50%, #848078 100%)',
+                glass: 'linear-gradient(160deg, #c6c3bc 0%, #a8a49b 55%, #8e8a82 100%)',
+                bump: 'rgba(155, 151, 143, 0.78)',
+                wallpaper: 'radial-gradient(circle at 50% 30%, #68737d 0%, #24292e 55%, #07080a 100%)',
+                glow: '#b4b1a9'
+            },
+            white: {
+                name: 'White Titanium',
+                chassis: 'linear-gradient(145deg, #ffffff 0%, #e4e4e2 50%, #c6c6c4 100%)',
+                glass: 'linear-gradient(160deg, #f8f8f6 0%, #ebebea 55%, #dcdcd9 100%)',
+                bump: 'rgba(225, 225, 222, 0.85)',
+                wallpaper: 'radial-gradient(circle at 50% 30%, #5b86b0 0%, #1d3247 55%, #070b10 100%)',
+                glow: '#e5e7eb'
+            },
+            black: {
+                name: 'Black Titanium',
+                chassis: 'linear-gradient(145deg, #4b4b4f 0%, #28282b 50%, #141416 100%)',
+                glass: 'linear-gradient(160deg, #323236 0%, #222225 55%, #161618 100%)',
+                bump: 'rgba(42, 42, 46, 0.85)',
+                wallpaper: 'radial-gradient(circle at 50% 30%, #38495c 0%, #141a21 55%, #040507 100%)',
+                glow: '#4b5563'
+            }
+        };
+
+        const lineupModels = [
+            {
+                id: 'iPhone 17 Pro',
+                badge: 'New',
+                tagline: 'The ultimate iPhone.',
+                price: 999,
+                monthly: '41.62',
+                colors: [
+                    { name: 'Desert Titanium', hex: '#cbb39b', chassis: 'linear-gradient(145deg, #d7c0a8, #9c8167)' },
+                    { name: 'Natural Titanium', hex: '#b8b4ac', chassis: 'linear-gradient(145deg, #d4d1ca, #8c8880)' },
+                    { name: 'White Titanium', hex: '#f2f2f0', chassis: 'linear-gradient(145deg, #ffffff, #d1d1cf)' },
+                    { name: 'Black Titanium', hex: '#2e2e32', chassis: 'linear-gradient(145deg, #4b4b4f, #18181b)' }
+                ],
+                cameras: 3,
+                specs: [
+                    { label: 'Display', value: '6.9″ or 6.3″ Super Retina XDR with ProMotion' },
+                    { label: 'Intelligence', value: 'Built for Apple Intelligence' },
+                    { label: 'Chip', value: 'A19 Pro chip with 6-core GPU' },
+                    { label: 'Camera', value: 'Pro camera system: 48MP Fusion, 48MP Ultra Wide, 5x Telephoto' },
+                    { label: 'Battery', value: 'Up to 33 hours video playback' }
+                ]
+            },
+            {
+                id: 'iPhone Air',
+                badge: 'New',
+                tagline: 'Impossibly thin. Remarkably powerful.',
+                price: 899,
+                monthly: '37.45',
+                colors: [
+                    { name: 'Sky Blue', hex: '#b8d4e8', chassis: 'linear-gradient(145deg, #cce3f2, #8eb5cf)' },
+                    { name: 'Starlight', hex: '#ede6d8', chassis: 'linear-gradient(145deg, #f5efe4, #d1c6b4)' },
+                    { name: 'Space Black', hex: '#2b2c30', chassis: 'linear-gradient(145deg, #43454a, #1b1c1f)' }
+                ],
+                cameras: 1,
+                specs: [
+                    { label: 'Display', value: '6.6″ Super Retina XDR OLED display (5.5mm thin)' },
+                    { label: 'Intelligence', value: 'Built for Apple Intelligence' },
+                    { label: 'Chip', value: 'A19 chip with 5-core GPU' },
+                    { label: 'Camera', value: '48MP Fusion single-lens Pro optical system' },
+                    { label: 'Battery', value: 'Up to 26 hours video playback' }
+                ]
+            },
+            {
+                id: 'iPhone 17',
+                badge: 'New',
+                tagline: 'A total powerhouse.',
+                price: 799,
+                monthly: '33.29',
+                colors: [
+                    { name: 'Ultramarine', hex: '#8fa4e8', chassis: 'linear-gradient(145deg, #a8baf5, #6980cc)' },
+                    { name: 'Teal', hex: '#96c9c4', chassis: 'linear-gradient(145deg, #b2deda, #6ea6a0)' },
+                    { name: 'Pink', hex: '#f0b8d4', chassis: 'linear-gradient(145deg, #fad1e6, #d48fb1)' },
+                    { name: 'White', hex: '#f5f5f7', chassis: 'linear-gradient(145deg, #ffffff, #d9d9de)' },
+                    { name: 'Black', hex: '#2a2a2d', chassis: 'linear-gradient(145deg, #444448, #19191c)' }
+                ],
+                cameras: 2,
+                specs: [
+                    { label: 'Display', value: '6.3″ Super Retina XDR display with Dynamic Island' },
+                    { label: 'Intelligence', value: 'Built for Apple Intelligence' },
+                    { label: 'Chip', value: 'A19 chip with 5-core GPU' },
+                    { label: 'Camera', value: 'Advanced dual-camera system: 48MP Fusion + Ultra Wide' },
+                    { label: 'Battery', value: 'Up to 27 hours video playback' }
+                ]
+            },
+            {
+                id: 'iPhone 16',
+                badge: '',
+                tagline: 'As amazing as ever.',
+                price: 699,
+                monthly: '29.12',
+                colors: [
+                    { name: 'Blue', hex: '#9bb7d4', chassis: 'linear-gradient(145deg, #b3cce6, #7a99ba)' },
+                    { name: 'Green', hex: '#b8d1be', chassis: 'linear-gradient(145deg, #cde3d3, #8fb097)' },
+                    { name: 'Black', hex: '#2e2f33', chassis: 'linear-gradient(145deg, #46484d, #1c1d20)' }
+                ],
+                cameras: 2,
+                specs: [
+                    { label: 'Display', value: '6.1″ Super Retina XDR OLED display' },
+                    { label: 'Intelligence', value: 'Built for Apple Intelligence' },
+                    { label: 'Chip', value: 'A18 chip with 5-core GPU' },
+                    { label: 'Camera', value: 'Dual-camera system: 48MP Fusion + 12MP Ultra Wide' },
+                    { label: 'Battery', value: 'Up to 22 hours video playback' }
+                ]
+            }
+        ];
+
+        const featureDetails = {
+            ai: {
+                tag: 'Apple Intelligence',
+                title: 'AI-opening possibilities.',
+                body: 'Apple Intelligence is the personal intelligence system that helps you write, express yourself, and get things done effortlessly. With groundbreaking privacy protections, it gives you peace of mind that no one else can access your data — not even Apple.',
+                highlights: [
+                    '• Writing Tools: Proofread, rewrite, and summarize text across Mail, Notes, and third-party apps.',
+                    '• Visual Intelligence: Instantly learn about restaurants, landmarks, and objects using Camera Control.',
+                    '• Genmoji & Image Playground: Create custom emojis and original images right on device.'
+                ]
+            },
+            camera: {
+                tag: 'Cutting-Edge Cameras',
+                title: 'Picture your best photos and videos.',
+                body: 'iPhone 17 Pro takes video capture to a whole new level with 4K 120 fps Dolby Vision — our highest resolution and frame rate combo yet. Combined with studio-quality four-mic array and Spatial Audio.',
+                highlights: [
+                    '• 48MP Fusion Camera with zero shutter lag and next-gen Photographic Styles.',
+                    '• 5x Tetraprism Telephoto lens on both iPhone 17 Pro and Pro Max.',
+                    '• Dedicated Camera Control button for instant tactile zoom, exposure, and depth adjustments.'
+                ]
+            },
+            chip: {
+                tag: 'Chip and Battery Life',
+                title: 'Fast that lasts.',
+                body: 'A19 Pro delivers phenomenal pro performance with a 16-core Neural Engine, 6-core GPU with hardware-accelerated ray tracing, and enhanced thermal architecture for sustained gaming and AI workloads.',
+                highlights: [
+                    '• Up to 20% faster GPU performance than previous generation.',
+                    '• Huge leap in battery life — up to 33 hours of video playback on iPhone 17 Pro Max.',
+                    '• Fast MagSafe wireless charging up to 25W with a 30W adapter.'
+                ]
+            },
+            design: {
+                tag: 'Innovation',
+                title: 'Beautiful and durable, by design.',
+                body: 'iPhone 17 Pro features a strong, lightweight Grade 5 titanium design with a refined microblasted texture and the thinnest borders ever on an Apple product.',
+                highlights: [
+                    '• Grade 5 titanium boasts one of the highest strength-to-weight ratios of any metal.',
+                    '• IP68 splash, water, and dust resistance (maximum depth of 6 meters up to 30 minutes).',
+                    '• Internal substructure made from 100% recycled aluminum for superior heat dissipation.'
+                ]
+            },
+            privacy: {
+                tag: 'Privacy',
+                title: 'Your data. Just where you want it.',
+                body: 'Designed to protect your privacy at every step. On-device processing powers most Apple Intelligence features, and when larger models are needed, Private Cloud Compute extends iPhone security into the cloud.',
+                highlights: [
+                    '• Independent security researchers can inspect the code running on Private Cloud Compute servers.',
+                    '• Face ID data never leaves your iPhone and is encrypted in the Secure Enclave.',
+                    '• App Tracking Transparency puts you in control of which apps can track your activity.'
+                ]
+            }
+        };
+
+        /* =====================================================================
+           HERO FINISH SWITCHER
+           ===================================================================== */
+        function setHeroFinish(key) {
+            const finish = heroFinishes[key];
+            if (!finish) return;
+
+            document.getElementById('hero-phone-back').style.background = finish.chassis;
+            document.getElementById('hero-phone-front').style.background = finish.chassis;
+            document.getElementById('hero-phone-glass').style.background = finish.glass;
+            document.getElementById('hero-camera-bump').style.background = finish.bump;
+            document.getElementById('hero-wallpaper').style.background = finish.wallpaper;
+            document.getElementById('hero-ambient-glow').style.background = `radial-gradient(circle, ${finish.glow} 0%, transparent 70%)`;
+
+            document.getElementById('hero-color-label').innerHTML =
+                `6.9″ or 6.3″ display in <span class="text-white font-semibold">${finish.name}</span>`;
+
+            ['desert', 'natural', 'white', 'black'].forEach(k => {
+                const btn = document.getElementById(`swatch-${k}`);
+                if (k === key) {
+                    btn.classList.add('ring-2', 'ring-white');
+                    btn.classList.remove('ring-transparent');
+                } else {
+                    btn.classList.remove('ring-2', 'ring-white');
+                    btn.classList.add('ring-transparent');
+                }
+            });
+        }
+
+        /* =====================================================================
+           LINEUP RENDERER & SWATCH SWITCHER
+           ===================================================================== */
+        const selectedLineupColors = {
+            'iPhone 17 Pro': 0,
+            'iPhone Air': 0,
+            'iPhone 17': 0,
+            'iPhone 16': 0
+        };
+
+        function renderLineup() {
+            const grid = document.getElementById('lineup-grid');
+            grid.innerHTML = lineupModels.map((model, mIdx) => {
+                const activeColorIdx = selectedLineupColors[model.id] || 0;
+                const activeColor = model.colors[activeColorIdx];
+
+                const cameraHTML = model.cameras === 3
+                    ? `<div class="w-11 h-12 rounded-xl bg-black/15 border border-white/30 p-1 relative">
+                         <div class="camera-lens w-4 h-4 rounded-full"></div>
+                         <div class="camera-lens w-4 h-4 rounded-full mt-1"></div>
+                         <div class="camera-lens w-4 h-4 rounded-full absolute top-1/2 -translate-y-1/2 right-1"></div>
+                       </div>`
+                    : model.cameras === 2
+                    ? `<div class="w-6 h-11 rounded-full bg-black/15 border border-white/30 p-1 flex flex-col justify-between">
+                         <div class="camera-lens w-4 h-4 rounded-full"></div>
+                         <div class="camera-lens w-4 h-4 rounded-full"></div>
+                       </div>`
+                    : `<div class="w-11 h-5 rounded-full bg-black/15 border border-white/30 p-0.5 flex items-center">
+                         <div class="camera-lens w-4 h-4 rounded-full"></div>
+                       </div>`;
+
+                return `
+                <div class="bg-white rounded-[28px] p-6 sm:p-7 flex flex-col justify-between shadow-xs border border-black/[0.04] hover:shadow-md transition-shadow">
+                    <div class="flex flex-col items-center text-center">
+                        <!-- Phone Visual -->
+                        <div class="h-52 flex items-center justify-center my-2">
+                            <div class="w-28 h-48 rounded-[26px] p-1 shadow-lg transition-all duration-300 relative"
+                                 style="background: ${activeColor.chassis};">
+                                <div class="w-full h-full rounded-[22px] p-2.5 relative overflow-hidden"
+                                     style="background: ${activeColor.hex};">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-black/10 via-transparent to-white/30"></div>
+                                    ${cameraHTML}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Swatches -->
+                        <div class="flex items-center justify-center gap-2 mt-3">
+                            ${model.colors.map((c, cIdx) => `
+                                <button onclick="selectLineupColor('${model.id}', ${cIdx})"
+                                        aria-label="${c.name}"
+                                        title="${c.name}"
+                                        class="w-4 h-4 rounded-full border border-black/20 transition-transform ${cIdx === activeColorIdx ? 'ring-2 ring-offset-2 ring-apple-blue scale-110' : 'hover:scale-110'}"
+                                        style="background-color: ${c.hex};"></button>
+                            `).join('')}
+                        </div>
+                        <span class="text-[11px] text-apple-subtext mt-2 h-4">${activeColor.name}</span>
+
+                        <!-- Badge & Title -->
+                        <span class="text-[11px] font-semibold text-apple-orange mt-2 h-4">${model.badge}</span>
+                        <h3 class="text-2xl font-semibold text-apple-dark tracking-tight">${model.id}</h3>
+                        <p class="text-xs text-apple-subtext mt-1 min-h-[32px]">${model.tagline}</p>
+
+                        <!-- Pricing -->
+                        <p class="text-sm font-semibold text-apple-dark mt-3">
+                            From $${model.price} or $${model.monthly}/mo. for 24 mo.
+                        </p>
+
+                        <!-- CTAs -->
+                        <div class="mt-4 flex items-center gap-3">
+                            <button onclick="openConfigurator('${model.id}')" class="bg-apple-blue hover:bg-apple-blueHover text-white text-xs font-medium px-4 py-2 rounded-full transition-colors">
+                                Buy
+                            </button>
+                            <button onclick="openFeatureModal('design')" class="text-apple-blue hover:underline text-xs font-medium">
+                                Learn more &rsaquo;
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Key Specs List -->
+                    <div class="mt-6 pt-5 border-t border-neutral-200 space-y-3.5 text-center">
+                        ${model.specs.map(spec => `
+                            <div>
+                                <p class="text-[11px] font-semibold text-apple-dark">${spec.value}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                `;
+            }).join('');
+        }
+
+        function selectLineupColor(modelId, colorIdx) {
+            selectedLineupColors[modelId] = colorIdx;
+            renderLineup();
+        }
+
+        /* =====================================================================
+           BENTO SCROLL & FEATURE MODAL
+           ===================================================================== */
+        function scrollBento(offset) {
+            document.getElementById('bento-track').scrollBy({ left: offset, behavior: 'smooth' });
+        }
+
+        function openFeatureModal(key) {
+            const data = featureDetails[key];
+            if (!data) return;
+            document.getElementById('feat-tag').textContent = data.tag;
+            document.getElementById('feat-title').textContent = data.title;
+            document.getElementById('feat-body').textContent = data.body;
+            document.getElementById('feat-highlights').innerHTML = data.highlights.map(h => `<p>${h}</p>`).join('');
+            document.getElementById('feature-modal').classList.remove('hidden');
+        }
+
+        function closeFeatureModal() {
+            document.getElementById('feature-modal').classList.add('hidden');
+        }
+
+        /* =====================================================================
+           APPLE STORE CONFIGURATOR & SHOPPING BAG
+           ===================================================================== */
+        let cfgState = {
+            modelId: 'iPhone 17 Pro',
+            finishIdx: 0,
+            storage: '256GB',
+            storageAdd: 0,
+            tradeIn: false
+        };
+
+        const storageOptions = [
+            { size: '256GB', add: 0 },
+            { size: '512GB', add: 200 },
+            { size: '1TB', add: 400 }
+        ];
+
+        function openConfigurator(modelId) {
+            cfgState = {
+                modelId: modelId || 'iPhone 17 Pro',
+                finishIdx: selectedLineupColors[modelId] || 0,
+                storage: '256GB',
+                storageAdd: 0,
+                tradeIn: false
+            };
+            renderConfigurator();
+            document.getElementById('configurator-modal').classList.remove('hidden');
+        }
+
+        function closeConfigurator() {
+            document.getElementById('configurator-modal').classList.add('hidden');
+        }
+
+        function renderConfigurator() {
+            const model = lineupModels.find(m => m.id === cfgState.modelId) || lineupModels[0];
+            const finish = model.colors[cfgState.finishIdx] || model.colors[0];
+
+            document.getElementById('cfg-title').textContent = `Buy ${model.id}`;
+            document.getElementById('cfg-subtitle').textContent = `From $${model.price} or $${model.monthly}/mo. for 24 mo.`;
+
+            // Phone Preview
+            document.getElementById('cfg-phone-preview').style.background = finish.chassis;
+            document.getElementById('cfg-phone-back').style.background = finish.hex;
+            document.getElementById('cfg-selected-finish-label').textContent = `Finish: ${finish.name}`;
+
+            // Model Selector
+            document.getElementById('cfg-model-options').innerHTML = lineupModels.map(m => `
+                <button type="button" onclick="selectCfgModel('${m.id}')"
+                        class="p-2.5 rounded-xl text-left text-xs transition-all ${m.id === model.id ? 'border-2 border-apple-blue bg-apple-blue/5' : 'border border-neutral-300 hover:border-neutral-400'}">
+                    <span class="font-semibold block text-apple-dark">${m.id}</span>
+                    <span class="text-apple-subtext">From $${m.price}</span>
+                </button>
+            `).join('');
+
+            // Finish Selector
+            document.getElementById('cfg-finish-options').innerHTML = model.colors.map((c, idx) => `
+                <button type="button" onclick="selectCfgFinish(${idx})"
+                        class="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs border transition-all ${idx === cfgState.finishIdx ? 'border-apple-blue bg-apple-blue/5 font-semibold' : 'border-neutral-300'}">
+                    <span class="w-4 h-4 rounded-full border border-black/20" style="background-color: ${c.hex};"></span>
+                    <span>${c.name}</span>
+                </button>
+            `).join('');
+
+            // Storage Selector
+            document.getElementById('cfg-storage-options').innerHTML = storageOptions.map(st => `
+                <button type="button" onclick="selectCfgStorage('${st.size}', ${st.add})"
+                        class="p-2.5 rounded-xl text-center text-xs transition-all ${st.size === cfgState.storage ? 'border-2 border-apple-blue bg-apple-blue/5 font-semibold' : 'border border-neutral-300'}">
+                    <span class="block text-apple-dark">${st.size}</span>
+                    <span class="text-[11px] text-apple-subtext">${st.add === 0 ? 'Included' : `+$${st.add}`}</span>
+                </button>
+            `).join('');
+
+            // Trade-in styling
+            const btnNo = document.getElementById('tradein-no');
+            const btnYes = document.getElementById('tradein-yes');
+            if (cfgState.tradeIn) {
+                btnYes.className = 'p-3 rounded-xl border-2 border-apple-blue bg-apple-blue/5 text-left text-xs';
+                btnNo.className = 'p-3 rounded-xl border border-neutral-300 text-left text-xs';
+            } else {
+                btnNo.className = 'p-3 rounded-xl border-2 border-apple-blue bg-apple-blue/5 text-left text-xs';
+                btnYes.className = 'p-3 rounded-xl border border-neutral-300 text-left text-xs';
+            }
+
+            // Live Price Calculation
+            const discount = cfgState.tradeIn ? 300 : 0;
+            const total = Math.max(399, model.price + cfgState.storageAdd - discount);
+            const monthly = (total / 24).toFixed(2);
+            document.getElementById('cfg-total-price').textContent = `$${total}`;
+            document.getElementById('cfg-monthly-price').textContent = `or $${monthly}/mo. for 24 mo.`;
+        }
+
+        function selectCfgModel(id) {
+            cfgState.modelId = id;
+            cfgState.finishIdx = 0;
+            renderConfigurator();
+        }
+
+        function selectCfgFinish(idx) {
+            cfgState.finishIdx = idx;
+            renderConfigurator();
+        }
+
+        function selectCfgStorage(size, add) {
+            cfgState.storage = size;
+            cfgState.storageAdd = add;
+            renderConfigurator();
+        }
+
+        function setCfgTradeIn(val) {
+            cfgState.tradeIn = val;
+            renderConfigurator();
+        }
+
+        let shoppingBag = [];
+
+        function addConfiguredToBag() {
+            const model = lineupModels.find(m => m.id === cfgState.modelId) || lineupModels[0];
+            const finish = model.colors[cfgState.finishIdx] || model.colors[0];
+            const discount = cfgState.tradeIn ? 300 : 0;
+            const price = Math.max(399, model.price + cfgState.storageAdd - discount);
+
+            shoppingBag.push({
+                title: `${model.id} ${cfgState.storage}`,
+                subtitle: `${finish.name}${cfgState.tradeIn ? ' • With Trade-In Credit' : ''}`,
+                colorHex: finish.hex,
+                price
+            });
+
+            updateBagUI();
+            closeConfigurator();
+            showToast(`${model.id} (${finish.name}) added to your Bag.`);
+        }
+
+        function updateBagUI() {
+            const badge = document.getElementById('bag-badge');
+            const container = document.getElementById('bag-items-container');
+            const footer = document.getElementById('bag-footer');
+
+            if (shoppingBag.length === 0) {
+                badge.classList.add('hidden');
+                footer.classList.add('hidden');
+                container.innerHTML = `<p class="text-sm text-apple-subtext py-10 text-center">Your Bag is empty.</p>`;
+                return;
+            }
+
+            badge.textContent = shoppingBag.length;
+            badge.classList.remove('hidden');
+            footer.classList.remove('hidden');
+
+            let sum = 0;
+            container.innerHTML = shoppingBag.map((item, idx) => {
+                sum += item.price;
+                return `
+                <div class="flex items-center justify-between bg-apple-gray p-3.5 rounded-2xl">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-12 rounded-lg border border-black/15 shrink-0" style="background-color: ${item.colorHex};"></div>
+                        <div>
+                            <p class="text-sm font-semibold text-apple-dark">${item.title}</p>
+                            <p class="text-xs text-apple-subtext">${item.subtitle}</p>
+                            <p class="text-xs font-medium text-apple-dark mt-1">$${item.price}</p>
+                        </div>
+                    </div>
+                    <button onclick="removeBagItem(${idx})" class="text-xs text-apple-blue hover:underline">Remove</button>
+                </div>
+                `;
+            }).join('');
+
+            document.getElementById('bag-total-amount').textContent = `$${sum.toLocaleString()}`;
+        }
+
+        function removeBagItem(idx) {
+            shoppingBag.splice(idx, 1);
+            updateBagUI();
+        }
+
+        function checkoutSuccess() {
+            shoppingBag = [];
+            updateBagUI();
+            toggleBagDrawer();
+            showToast('Order placed! Thank you for shopping at Apple.');
+        }
+
+        /* =====================================================================
+           NAVIGATION DRAWERS & SEARCH
+           ===================================================================== */
+        function toggleBagDrawer() {
+            updateBagUI();
+            document.getElementById('bag-drawer').classList.toggle('hidden');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                setTimeout(() => document.getElementById('search-input').focus(), 50);
+            }
+        }
+
+        function filterQuickLinks(query) {
+            const q = query.toLowerCase();
+            const items = document.querySelectorAll('#search-links li');
+            items.forEach(li => {
+                li.style.display = li.textContent.toLowerCase().includes(q) ? 'block' : 'none';
+            });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.remove('opacity-0');
+            setTimeout(() => toast.classList.add('opacity-0'), 3000);
+        }
+
+        // Initialize Lineup on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderLineup();
+        });
+    </script>
+</body>
+</html>
